@@ -57,7 +57,7 @@ choco pack
 
 # Push the package to http://choco.ddrr.org/api/odata
 if ((Get-ChildItem -Path $curScriptFolder -Filter "*.nupkg").Count -eq 1){
-    choco push --source='http://choco.ddrr.org/api/odata' --api-key=f81f900f-3cd4-418f-9ac7-d730cfcb5627 --force
+    choco push --source='https://push.chocolatey.org/' --api-key=8b2e01f2-baba-4535-8837-e739dd9b349c --force
 }
 else {
     throw "There is something wrong to create the package, cannot push to repository."
