@@ -43,11 +43,12 @@ $autoProfilePathList | % {
     if (Test-Path $curCmdletFolder)
     {
         Get-ChildItem $curCmdletFolder -Filter "*.ps1" | ? { -not ( $_.Name -like "Template.ps1") } | % {
+            $fileName = $_.VersionInfo.FileName
             try {
-                . "$PSScriptRoot\Import-Ps1AsCommand.ps1" $($_.VersionInfo.FileName) -Scope Global
+                . "$PSScriptRoot\Import-Ps1AsCommand.ps1" $fileName -Scope Global
             }
             catch {
-                Write-Host "Failed to import cmdlet from $_" -ForegroundColor Red
+                Write-Host "Failed to import cmdlet from $fileName with error: $_" -ForegroundColor Red
             }
         }
     }
