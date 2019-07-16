@@ -276,7 +276,8 @@ function Install-PsPackage
         [string] $PackageRoot,
         [string] $ModuleName,
         [string] $CmdletFolderName = "data\cmdlet",
-        [string] $ProfileScriptName = "data\PsProfile.ps1"
+        [string] $ProfileScriptName = "data\PsProfile.ps1",
+        [string] $PsmProfileScriptName = "data\PsmProfile.ps1"
     )
 
     if (!(Test-Path $PackageRoot -PathType Container)) { throw "PackageRoot `"$PackageRoot`" is not a valid folder." }
@@ -286,6 +287,7 @@ function Install-PsPackage
 
     $cmdletFolderPath = Join-Path $PackageRoot $CmdletFolderName
     $psProfileScriptPath = Join-Path $PackageRoot $ProfileScriptName
+    $psmProfileScriptPath = Join-Path $PackageRoot $PsmProfileScriptName
 
     Write-ColorHost "<Yellow>Installing package <Cyan>$packageName</Cyan> to PowerShell ...</Yellow>"
 
@@ -317,6 +319,12 @@ function Install-PsPackage
     
                 Write-ColorHost "Extraced cmdlet `"<Green>$cmdletName</Green>`" from $($_.VersionInfo.FileName)"
             }
+        }
+
+        # Include the psm profile
+        if (Test-Path $psmProfileScriptPath)
+        {
+            Add-Content -Value "`r`n. `"$psmProfileScriptPath`"" -Path $moduleFilePath
         }
     }
 

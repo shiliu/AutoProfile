@@ -2,9 +2,9 @@ $curScriptFolder  = $PSScriptRoot
 cd $curScriptFolder
 
 # Make sure ChocoHelperLib.ps1 is up to date
-$curHelperLibPath = Join-Path $curScriptFolder "tools\ChocoHelperLib.ps1"
-$latestHelperLibPath = Join-Path $curScriptFolder "..\..\HelperScripts\ChocoHelperLib.ps1" -Resolve
-if ((Test-Path $curHelperLibPath) -and (Test-Path $latestHelperLibPath)){ Copy-Item $latestHelperLibPath $curHelperLibPath -Force }
+#$curHelperLibPath = Join-Path $curScriptFolder "tools\ChocoHelperLib.ps1"
+#$latestHelperLibPath = Join-Path $curScriptFolder "..\..\HelperScripts\ChocoHelperLib.ps1" -Resolve
+#if ((Test-Path $curHelperLibPath) -and (Test-Path $latestHelperLibPath)){ Copy-Item $latestHelperLibPath $curHelperLibPath -Force }
 
 # Update the package version #
 $nuspecFileName = (Get-ChildItem -Path $curScriptFolder -Filter "*.nuspec" | select -First 1).Name
