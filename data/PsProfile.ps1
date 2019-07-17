@@ -8,3 +8,7 @@
 Import-Module -Name autoprofile -WarningAction Ignore
 
 . Import-AutoProfileComponents -IncludePsProfiles
+
+# PsReadLine
+Write-ColorHost "[PsReadLine] <Green>CaptureScreen   Shift+Alt+C</Green>"
+Set-PSReadlineKeyHandler -Chord Shift+Alt+C -Function CaptureScreen
