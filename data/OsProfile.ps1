@@ -1,4 +1,4 @@
-# This will be executed for AutoProfile when power shell is initializing.
+# Execute this for AutoProfile when OS started
 
 # References:
 # 1. Below are the list of predefined vars that can be used:
@@ -7,4 +7,4 @@
 # Note: without this, the directly runnable code in module file (psm1) will not work and only directly defined function in that file will be imported
 Import-Module -Name autoprofile -WarningAction Ignore
 
-. Import-AutoProfileComponents -IncludePsProfiles
+. Import-AutoProfileComponents -IncludeOsProfiles -IncludeBin
